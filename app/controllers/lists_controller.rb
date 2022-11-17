@@ -28,6 +28,6 @@ class ListsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :movie, :bookmark)
   end
 end
