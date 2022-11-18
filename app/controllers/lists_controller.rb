@@ -23,11 +23,11 @@ class ListsController < ApplicationController
 
   private
 
-  def set_restaurant
+  def set_list
     @list = List.find(params[:list_id])
   end
 
-  def restaurant_params
-    params.require(:list).permit(:name, :movie, :bookmark)
+  def list_params
+    params.require(:list).permit(:name)
   end
 end

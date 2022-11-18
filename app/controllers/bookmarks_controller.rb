@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to list_path(@list)
     else
-      render :new, :lists, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -24,11 +24,15 @@ class BookmarksController < ApplicationController
 
   private
 
-  def set_bookmark
-    @bookmark = Bookmark.find(params[:bookmark_id])
+  def bookmark_params
+    params.require(:bookmark).permit(:comment, :movie_id)
   end
 
-  def bookmark_params
-    params.require(:bookmark).permit(:comment)
+  def set_bookmark
+    @bookmark = Bookmark.find(params[:id])
+  end
+
+  def set_list
+    @list = List.find(params[:list_id])
   end
 end
